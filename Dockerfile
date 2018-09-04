@@ -40,6 +40,9 @@ RUN echo "deb http://ppa.launchpad.net/nginx/stable/ubuntu `lsb_release -cs` mai
 COPY config/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf 
 COPY config/nginx/default /etc/nginx/sites-available/default
 
+RUN touch /etc/php/7.0/fpm/conf.d/uploads.ini \
+    && echo "upload_max_filesize = 20M;" >> /etc/php/7.0/fpm/conf.d/uploads.ini 
+
 # php7.0-fpm will not start if this directory does not exist
 RUN mkdir /run/php && echo extension=amqp.so > /etc/php/7.0/mods-available/amqp.ini && echo extension=bcmath.so > /etc/php/7.0/mods-available/bcmath.ini \
     && phpenmod amqp && phpenmod bcmath && phpenmod xdebug && service php7.0-fpm restart
