@@ -17,6 +17,8 @@ RUN echo "deb http://ppa.launchpad.net/nginx/stable/ubuntu `lsb_release -cs` mai
     wget \
     cmake \
     nginx \
+    zip \
+    unzip \
     git \
     gcc make autoconf libc-dev \
     pkg-config librabbitmq-dev libmagickwand-dev  libmcrypt-dev libpng-dev zlib1g-dev\
